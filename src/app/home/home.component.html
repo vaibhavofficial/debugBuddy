@@ -1,0 +1,20 @@
+<div class="user-form">
+    <div class="user-form-container">
+        <form [formGroup]="userForm" (ngSubmit)="submit()">
+            <mat-card class="example-card" appearance="outlined">
+                <mat-card-header>
+                    <mat-card-title>Debug Buddy</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+
+                    <mat-form-field class="user-form-field">
+                        <mat-label> Enter Cid</mat-label>
+                        <input matInput formControlName="id" name="id" id="name" required>
+                    </mat-form-field>
+
+                    <button mat-stroked-button class="mat-btn" [disabled]="!userForm.valid">Go</button>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>
