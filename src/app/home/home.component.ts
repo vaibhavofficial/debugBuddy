@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from "@angular/router";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -10,7 +11,7 @@ export class HomeComponent {
 
   userForm: FormGroup;
 
-  constructor() {
+  constructor(private router: Router) {
     this.userForm = new FormGroup({
       id: new FormControl('', [Validators.required, Validators.minLength(16)])
     })
@@ -20,6 +21,8 @@ export class HomeComponent {
     if (!this.userForm.valid) {
       return;
     }
+
+    this.router.navigate(['/dashboard']);
     console.log(this.userForm.value);
   }
 
