@@ -1,0 +1,10 @@
+.horizontal-container {
+  display: flex; /* Use flexbox to create a horizontal layout */
+  justify-content: space-around; /* Optional: Adjust as per your layout requirements */
+  align-items: center; /* Optional: Adjust as per your layout requirements */
+}
+
+.horizontal-item {
+  flex: 0 0 auto; /* Allow items to shrink or grow based on content */
+  margin: 0 10px; /* Adjust margin as needed */
+}

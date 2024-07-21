@@ -1,1 +1,7 @@
 <p>dashboard works!</p>
+
+<div class="horizontal-container">
+  <div *ngFor="let item of items" class="horizontal-item">
+    <app-node-list [data]="item"></app-node-list>
+  </div>
+</div>
