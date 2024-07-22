@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  items: string[] = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+  items: string[] = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
 
   constructor() {}
 }

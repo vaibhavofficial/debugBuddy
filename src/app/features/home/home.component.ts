@@ -12,7 +12,11 @@ export class HomeComponent {
 
   constructor(private router: Router) {
     this.userForm = new FormGroup({
-      id: new FormControl('', [Validators.required, Validators.minLength(16)]),
+      id: new FormControl('', [
+        Validators.required,
+        Validators.minLength(32),
+        Validators.maxLength(32),
+      ]),
     });
   }
 

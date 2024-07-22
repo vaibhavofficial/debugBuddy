@@ -1,0 +1,46 @@
+<mat-stepper>
+  <mat-step label="UI" state="phone">
+    <p>Ui calls details</p>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="JS SDK" state="chat">
+    <p>JS SDK calls details</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Proxy">
+    <p>Proxy calls details</p>
+  </mat-step>
+
+  <mat-step label="Bff">
+    <p>Bff calls details</p>
+  </mat-step>
+
+  <mat-step label="Layout / Engine">
+    <p>Layout / Engine calls details</p>
+  </mat-step>
+
+  <mat-step label="usg">
+    <p>usg calls details</p>
+  </mat-step>
+
+  <mat-step label="connector">
+    <p>connector calls details</p>
+  </mat-step>
+
+  <mat-step label="supplier">
+    <p>supplier calls details</p>
+  </mat-step>
+
+  <!-- Icon overrides. -->
+  <ng-template matStepperIcon="phone">
+    <mat-icon>call_end</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="chat">
+    <mat-icon>forum</mat-icon>
+  </ng-template>
+</mat-stepper>

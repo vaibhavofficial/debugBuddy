@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-node-list',
@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './node-list.component.scss',
 })
 export class NodeListComponent {
+  @Input() data: any;
+
   //
   isExpanded: boolean = false;
 
