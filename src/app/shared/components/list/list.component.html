@@ -1,0 +1,74 @@
+<p>list works!</p>
+<div class="table-container">
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    showFirstLastButtons
+  ></mat-paginator>
+
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-table">
+    <!-- Define columns -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell
+        class="mat-header-cell"
+        *matHeaderCellDef
+        mat-sort-header
+      >
+        ID
+      </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element">
+        {{ element.id }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell
+        class="mat-header-cell"
+        *matHeaderCellDef
+        mat-sort-header
+      >
+        Name
+      </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element">
+        {{ element.name }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="post">
+      <mat-header-cell
+        class="mat-header-cell"
+        *matHeaderCellDef
+        mat-sort-header
+      >
+        Post
+      </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element">
+        {{ element.post }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <mat-header-cell
+        class="mat-header-cell"
+        *matHeaderCellDef
+        mat-sort-header
+      >
+        age
+      </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element">
+        {{ element.age }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Add more columns as needed -->
+
+    <mat-header-row
+      *matHeaderRowDef="displayedColumns"
+      class="mat-header-row"
+    ></mat-header-row>
+    <mat-row
+      *matRowDef="let element; columns: displayedColumns"
+      (click)="rowClicked(element)"
+      class="mat-row"
+    ></mat-row>
+  </mat-table>
+</div>
