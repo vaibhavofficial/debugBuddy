@@ -1,9 +1,16 @@
-import { Component, ViewChild, AfterViewInit, Input } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  AfterViewInit,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-import { UserData, pageSizeOptions } from '../../../core/constants/constant';
+import { AppListData, pageSizeOptions } from '../../../core/constants/constant';
 
 @Component({
   selector: 'app-list',
@@ -13,24 +20,25 @@ import { UserData, pageSizeOptions } from '../../../core/constants/constant';
 export class ListComponent {
   pageSizeOptions = pageSizeOptions;
   @Input() displayedColumns: string[] = [];
-  @Input() userData: UserData[] = [];
+  @Input() appListData: AppListData[] = [];
+  @Output() appListEvent = new EventEmitter<string>();
 
-  dataSource: MatTableDataSource<UserData>;
+  dataSource: MatTableDataSource<AppListData>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor() {
-    this.dataSource = new MatTableDataSource(this.userData);
+    this.dataSource = new MatTableDataSource(this.appListData);
   }
 
   ngAfterViewInit() {
-    this.dataSource = new MatTableDataSource(this.userData);
+    this.dataSource = new MatTableDataSource(this.appListData);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  rowClicked(user: UserData) {
-    console.log('Row clicked: ', user);
-    // Implement your logic here for what happens when a row is clicked
+  rowClicked(app: AppListData) {
+    console.log('Row clicked: ', app);
+    this.appListEvent.emit(app.id);
   }
 }

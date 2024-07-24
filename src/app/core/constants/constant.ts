@@ -1,4 +1,4 @@
-export interface UserData {
+export interface AppListData {
   id: string;
   name: string;
   post: string;
