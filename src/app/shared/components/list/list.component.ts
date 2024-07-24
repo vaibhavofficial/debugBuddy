@@ -1,15 +1,9 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-export interface UserData {
-  id: string;
-  name: string;
-  post: string;
-  age: string;
-  // Add more fields as needed
-}
+import { UserData, pageSizeOptions } from '../../../core/constants/constant';
 
 @Component({
   selector: 'app-list',
@@ -17,46 +11,22 @@ export interface UserData {
   styleUrl: './list.component.scss',
 })
 export class ListComponent {
-  displayedColumns: string[] = ['id', 'name', 'post', 'age']; // Define columns to be displayed
+  pageSizeOptions = pageSizeOptions;
+  @Input() displayedColumns: string[] = [];
+  @Input() userData: UserData[] = [];
 
   dataSource: MatTableDataSource<UserData>;
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  // Example data
-  userData: UserData[] = [
-    { id: '1', name: 'Alice', post: 'developer', age: '33' },
-    { id: '2', name: 'Bob', post: 'developer', age: '33' },
-    { id: '3', name: 'Charlie', post: 'developer', age: '33' },
-
-    { id: '1', name: 'Alice', post: 'developer', age: '33' },
-    { id: '2', name: 'Bob', post: 'developer', age: '33' },
-    { id: '3', name: 'Charlie', post: 'developer', age: '33' },
-
-    { id: '1', name: 'Alice', post: 'developer', age: '33' },
-    { id: '2', name: 'Bob', post: 'developer', age: '33' },
-    { id: '3', name: 'Charlie', post: 'developer', age: '33' },
-
-    { id: '1', name: 'Alice', post: 'developer', age: '33' },
-    { id: '2', name: 'Bob', post: 'developer', age: '33' },
-    { id: '3', name: 'Charlie', post: 'developer', age: '33' },
-
-    { id: '1', name: 'Alice', post: 'developer', age: '33' },
-    { id: '2', name: 'Bob', post: 'developer', age: '33' },
-    { id: '3', name: 'Charlie', post: 'developer', age: '33' },
-
-    // Add more data as needed
-  ];
+  constructor() {
+    this.dataSource = new MatTableDataSource(this.userData);
+  }
 
   ngAfterViewInit() {
     this.dataSource = new MatTableDataSource(this.userData);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }
-
-  constructor() {
-    this.dataSource = new MatTableDataSource(this.userData);
   }
 
   rowClicked(user: UserData) {
